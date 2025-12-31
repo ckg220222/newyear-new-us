@@ -94,6 +94,31 @@ h1 {
   margin-top: 12px;
 }
 
+/* HARAPAN */
+#hope {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  padding: 12px 16px;
+  border-radius: 15px;
+  background: rgba(0,0,0,0.35);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.5s;
+}
+
+#hope.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PETUNJUK */
+#hopeHint {
+  font-size: 12px;
+  margin-top: 6px;
+  opacity: 0.8;
+}
+
 /* MUSIC BUTTON */
 .music-btn {
   position: fixed;
@@ -108,20 +133,6 @@ h1 {
   justify-content: center;
   font-size: 22px;
   z-index: 999;
-}
-
-/* HARAPAN 2026 */
-#hope {
-  font-size: 1.1rem;
-  margin-top: 15px;
-  min-height: 40px;
-  opacity: 0;
-  transition: 0.6s;
-}
-
-#hope.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* GALLERY */
@@ -185,8 +196,8 @@ h1 {
 <!-- INTRO -->
 <div id="intro">
   <h1>💖 HAII CANTIK 💖</h1>
-  <p>❤️SEMOGA SAYANG SUKA YAA❤️</p>
-  <button onclick="start()">💐 PENCET CINI 💐</button>
+  <p>SEMOGA SAYANG SUKA YAA</p>
+  <button onclick="start()">PENCET CINII ❤️</button>
 </div>
 
 <!-- AUDIO -->
@@ -199,29 +210,31 @@ h1 {
 <!-- SECTION 1 -->
 <section>
   <h1>🎆 Selamat Tahun Baru 2026 🎆</h1>
-  <p>Bareng Terus Ya Sampai Kapanpun</p>
+  <p>BARENG TERUS YA SETIAP TAHUNNYA</p>
 
   <div class="card">
-    <h3>💝Love Youu Soo Muchh Sayangku💝</h3>
+    <h3>LOVE YOUU SOO MUCHH SAYANG</h3>
     <div id="countdown"></div>
-    <div id="hope"></div>
+
+    <!-- HARAPAN -->
+    <div id="hope" onclick="nextHope()"></div>
+    <div id="hopeHint">👆 PENCET PENCET</div>
   </div>
 </section>
 
 <!-- SECTION 2 -->
 <section>
-  <h1>📸 Foto Capa Niiii</h1>
-  <p>Anjay Foto</p>
+  <h1>📸 Foto Capaa Nii</h1>
 
   <div class="gallery">
-    <div class="photo frame1 reveal"><img src="foto1.JPG"><span>Kesayangan ayang ni❤️</span></div>
-    <div class="photo frame2 reveal"><img src="foto2.JPG"><span>Kalau ini Kesayangan Abang💖</span></div>
-    <div class="photo frame3 reveal"><img src="foto3.JPG"><span>Istrikuuu 🥰</span></div>
-    <div class="photo frame4 reveal"><img src="foto4.JPG"><span>Pembalap Capa nii 🥶</span></div>
-    <div class="photo frame1 reveal"><img src="foto5.JPG"><span>Beh Skena Abiez 😜</span></div>
-    <div class="photo frame2 reveal"><img src="foto6.JPG"><span>Si Cantikk 😘</span></div>
-    <div class="photo frame3 reveal"><img src="foto7.JPG"><span>Sayangkuuu 🤍</span></div>
-    <div class="photo frame4 reveal"><img src="foto8.jpg"><span>Masnya Sayang hihi🖤</span></div>
+    <div class="photo frame1 reveal"><img src="foto1.jpg"><span>Gantengnya Ayang nii 🖤</span></div>
+    <div class="photo frame2 reveal"><img src="foto2.jpg"><span>Ini Kesayangan Abang 🤍</span></div>
+    <div class="photo frame3 reveal"><img src="foto3.jpg"><span>Si Cantikk 💕</span></div>
+    <div class="photo frame4 reveal"><img src="foto4.jpg"><span>Pembalap capa nii 🥶</span></div>
+    <div class="photo frame1 reveal"><img src="foto5.jpg"><span>Anjay Skena Abiez 😂</span></div>
+    <div class="photo frame2 reveal"><img src="foto6.jpg"><span>Istrikuuu sayang 💖</span></div>
+    <div class="photo frame3 reveal"><img src="foto7.jpg"><span>Love youu 💗</span></div>
+    <div class="photo frame4 reveal"><img src="foto8.jpg"><span>Masnya ayang nii 💐</span></div>
   </div>
 </section>
 
@@ -258,28 +271,43 @@ setInterval(() => {
     Math.floor((d / 1000) % 60) + " detik";
 }, 1000);
 
-/* HARAPAN 2026 */
+/* HARAPAN 2026 (AUTO + MANUAL) */
 const hopes = [
   "Semoga 2026 makin sabar satu sama lain ❤️",
-  "Lebih Banyak Happynya Lagi yaa sayang",
-  "Semoga Kita Cepat Ketemu Yaa 💝",
-  "🥰 Terima Kasih My #1 Support Systemnya Gw 😘",
-  "Bareng terus ya sampai tahun-tahun berikutnya 💖"
+  "SEMOGA KITA SELALU DILINDUNGI DAN DILANCARKAN REJEKINYA",
+  "TETAP JADI MY #1 SUPPORT SYATEMNYA GW YA 😘",
+  "SEMOGA KITA CEPAT KETEMU SAYANGKUU 🥰",
+  "BARENG TERUS YAA SAMPAI TAHUN TAHUN SELANJUTNYA 💝"
 ];
 
 let hopeIndex = 0;
 const hopeEl = document.getElementById("hope");
+let hopeTimer;
 
-function changeHope() {
+function showHope() {
   hopeEl.classList.remove("show");
   setTimeout(() => {
     hopeEl.innerText = hopes[hopeIndex];
     hopeEl.classList.add("show");
-    hopeIndex = (hopeIndex + 1) % hopes.length;
-  }, 400);
+  }, 300);
 }
-changeHope();
-setInterval(changeHope, 4000);
+
+function nextHope() {
+  hopeIndex = (hopeIndex + 1) % hopes.length;
+  showHope();
+  resetAutoHope();
+}
+
+function resetAutoHope() {
+  clearInterval(hopeTimer);
+  hopeTimer = setInterval(() => {
+    hopeIndex = (hopeIndex + 1) % hopes.length;
+    showHope();
+  }, 4000);
+}
+
+showHope();
+resetAutoHope();
 
 /* ANIMASI SCROLL */
 const reveals = document.querySelectorAll(".reveal");
