@@ -70,7 +70,7 @@ section {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   animation: pulse 2s infinite;
 }
 
@@ -90,8 +90,8 @@ h1 {
 
 /* COUNTDOWN */
 #countdown {
-  font-size: 1.4rem;
-  margin-top: 15px;
+  font-size: 1.3rem;
+  margin-top: 12px;
 }
 
 /* MUSIC BUTTON */
@@ -108,6 +108,20 @@ h1 {
   justify-content: center;
   font-size: 22px;
   z-index: 999;
+}
+
+/* HARAPAN 2026 */
+#hope {
+  font-size: 1.1rem;
+  margin-top: 15px;
+  min-height: 40px;
+  opacity: 0;
+  transition: 0.6s;
+}
+
+#hope.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* GALLERY */
@@ -146,7 +160,7 @@ h1 {
   transform: scale(1.05) rotate(0deg);
 }
 
-/* FRAME VARIATION */
+/* FRAME */
 .frame1 { border: 4px dashed #ff8fab; }
 .frame2 { border: 4px solid #ffd6e0; transform: rotate(2deg); }
 .frame3 { border: 4px dotted #ffc2d1; background: #fff0f5; transform: rotate(-3deg); }
@@ -163,13 +177,6 @@ h1 {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-
-/* RESPONSIVE */
-@media (min-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 </style>
 </head>
 
@@ -177,9 +184,9 @@ h1 {
 
 <!-- INTRO -->
 <div id="intro">
-  <h1>💖 Haii Cantik 💖</h1>
-  <p>Semoga Sayang Sukaa</p>
-  <button onclick="start()">Pencet Cini</button>
+  <h1>💖 HAII CANTIK 💖</h1>
+  <p>❤️SEMOGA SAYANG SUKA YAA❤️</p>
+  <button onclick="start()">💐 PENCET CINI 💐</button>
 </div>
 
 <!-- AUDIO -->
@@ -192,32 +199,34 @@ h1 {
 <!-- SECTION 1 -->
 <section>
   <h1>🎆 Selamat Tahun Baru 2026 🎆</h1>
-  <p>Bareng Terus Ya Sampai Tahun Tahun Berikutnya</p>
+  <p>Bareng Terus Ya Sampai Kapanpun</p>
 
   <div class="card">
-    <h3>Love You So Muchh Sayangku</h3>
+    <h3>💝Love Youu Soo Muchh Sayangku💝</h3>
     <div id="countdown"></div>
+    <div id="hope"></div>
   </div>
 </section>
 
 <!-- SECTION 2 -->
 <section>
-  <h1>📸 Foto Capaniii</h1>
+  <h1>📸 Foto Capa Niiii</h1>
   <p>Anjay Foto</p>
 
   <div class="gallery">
-    <div class="photo frame1 reveal"><img src="foto1.jpg"><span>Kesayangan ayangg🖤</span></div>
-    <div class="photo frame2 reveal"><img src="foto2.jpg"><span>Kalau ini kesayangan abang🤍</span></div>
-    <div class="photo frame3 reveal"><img src="foto3.jpg"><span>Pembalap Capa Nii?</span></div>
-    <div class="photo frame4 reveal"><img src="foto4.jpg"><span>Si cantikk</span></div>
-    <div class="photo frame1 reveal"><img src="foto5.jpg"><span>Mas nya ayang inii</span></div>
-    <div class="photo frame2 reveal"><img src="foto6.jpg"><span>Istrikuuuu</span></div>
-    <div class="photo frame3 reveal"><img src="foto7.jpg"><span>Beh Skena Abiez</span></div>
-    <div class="photo frame4 reveal"><img src="foto8.jpg"><span>Cinta Cintaku</span></div>
+    <div class="photo frame1 reveal"><img src="foto1.jpg"><span>Kesayangan ayang ni❤️</span></div>
+    <div class="photo frame2 reveal"><img src="foto2.jpg"><span>Kalau ini Kesayangan Abang💖</span></div>
+    <div class="photo frame3 reveal"><img src="foto3.jpg"><span>Istrikuuu 🥰</span></div>
+    <div class="photo frame4 reveal"><img src="foto4.jpg"><span>Pembalap Capa nii 🥶</span></div>
+    <div class="photo frame1 reveal"><img src="foto5.jpg"><span>Beh Skena Abiez 😜</span></div>
+    <div class="photo frame2 reveal"><img src="foto6.jpg"><span>Si Cantikk 😘</span></div>
+    <div class="photo frame3 reveal"><img src="foto7.jpg"><span>Sayangkuuu 🤍</span></div>
+    <div class="photo frame4 reveal"><img src="foto8.jpg"><span>Masnya Sayang hihi🖤</span></div>
   </div>
 </section>
 
 <script>
+/* INTRO & MUSIC */
 const music = document.getElementById("music");
 const intro = document.getElementById("intro");
 const btn = document.getElementById("musicBtn");
@@ -231,20 +240,17 @@ function start() {
 
 function toggleMusic() {
   if (playing) {
-    music.pause();
-    btn.innerText = "🔇";
+    music.pause(); btn.innerText = "🔇";
   } else {
-    music.play();
-    btn.innerText = "🔊";
+    music.play(); btn.innerText = "🔊";
   }
   playing = !playing;
 }
 
-// COUNTDOWN
+/* COUNTDOWN */
 const target = new Date("January 1, 2026 00:00:00").getTime();
 setInterval(() => {
-  const now = new Date().getTime();
-  const d = target - now;
+  const d = target - new Date().getTime();
   document.getElementById("countdown").innerHTML =
     Math.floor(d / (1000*60*60*24)) + " hari " +
     Math.floor((d / (1000*60*60)) % 24) + " jam " +
@@ -252,7 +258,30 @@ setInterval(() => {
     Math.floor((d / 1000) % 60) + " detik";
 }, 1000);
 
-// ANIMASI SCROLL
+/* HARAPAN 2026 */
+const hopes = [
+  "Semoga 2026 makin sabar satu sama lain ❤️",
+  "Lebih Banyak Happynya Lagi yaa sayang",
+  "Semoga Kita Cepat Ketemu Yaa 💝",
+  "🥰 Terima Kasih My #1 Support Systemnya Gw 😘",
+  "Bareng terus ya sampai tahun-tahun berikutnya 💖"
+];
+
+let hopeIndex = 0;
+const hopeEl = document.getElementById("hope");
+
+function changeHope() {
+  hopeEl.classList.remove("show");
+  setTimeout(() => {
+    hopeEl.innerText = hopes[hopeIndex];
+    hopeEl.classList.add("show");
+    hopeIndex = (hopeIndex + 1) % hopes.length;
+  }, 400);
+}
+changeHope();
+setInterval(changeHope, 4000);
+
+/* ANIMASI SCROLL */
 const reveals = document.querySelectorAll(".reveal");
 function revealOnScroll() {
   const h = window.innerHeight;
