@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Bersamamu ❤️</title>
+
+<style>
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* INTRO */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #ff5f8f, #ff8fb1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease;
+}
+
+#intro h1 {
+  font-size: 2.5rem;
+  animation: pulse 2s infinite;
+}
+
+#intro p {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+#intro button {
+  margin-top: 30px;
+  padding: 15px 35px;
+  border-radius: 40px;
+  border: none;
+  background: white;
+  color: #ff3f6c;
+  font-size: 18px;
+}
+
+/* MAIN */
+section {
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2.8rem;
+  animation: pulse 2s infinite;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  border-radius: 25px;
+  padding: 25px;
+  margin: 20px auto;
+  max-width: 420px;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Countdown */
+#countdown {
+  font-size: 1.6rem;
+  margin-top: 15px;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+/* Music Button */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff3f6c;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+/* Hearts */
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <h1>💖 Hello 2026 💖</h1>
+  <p>Kisah kecil kita dimulai di sini</p>
+  <button onclick="start()">Tap to Start ❤️</button>
+</div>
+
+<!-- AUDIO -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MUSIC BUTTON -->
+<div class="music-btn" onclick="toggleMusic()" id="musicBtn">🔊</div>
+
+<!-- SECTION 1 -->
+<section>
+  <h1>🎆 Selamat Tahun Baru 2026 🎆</h1>
+  <h2>Masih mau bareng aku terus kan? 😆❤️</h2>
+
+  <div class="card">
+    <p>Pasangan paling gemas:</p>
+    <h3>💑 [Nama Kamu] & [Nama Pasangan]</h3>
+    <div id="countdown"></div>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section>
+  <h1>💌 Pesan Tahun Baru</h1>
+  <div class="card">
+    <p id="message">Klik tombol 😜</p>
+    <button onclick="randomMessage()">Pesan Lucu 💖</button>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section>
+  <h1>📸 Kenangan Kita</h1>
+  <div class="card">
+    <div class="gallery">
+      <img src="foto1.jpg">
+      <img src="foto2.jpg">
+      <img src="foto3.jpg">
+      <img src="foto4.jpg">
+    </div>
+  </div>
+</section>
+
+<script>
+// INTRO START
+const music = document.getElementById("music");
+const intro = document.getElementById("intro");
+const btn = document.getElementById("musicBtn");
+let playing = true;
+
+function start() {
+  music.play();
+  intro.style.opacity = 0;
+  setTimeout(() => intro.style.display = "none", 1000);
+}
+
+// Toggle music
+function toggleMusic() {
+  if (playing) {
+    music.pause();
+    btn.innerText = "🔇";
+  } else {
+    music.play();
+    btn.innerText = "🔊";
+  }
+  playing = !playing;
+}
+
+// Countdown
+const targetDate = new Date("January 1, 2026 00:00:00").getTime();
+setInterval(() => {
+  const now = new Date().getTime();
+  const d = targetDate - now;
+
+  document.getElementById("countdown").innerHTML =
+    Math.floor(d / (1000*60*60*24)) + " hari " +
+    Math.floor((d / (1000*60*60)) % 24) + " jam " +
+    Math.floor((d / (1000*60)) % 60) + " menit " +
+    Math.floor((d / 1000) % 60) + " detik";
+}, 1000);
+
+// Pesan
+const messages = [
+  "2026 masih sama kamu ❤️",
+  "Resolusi 2026: makin sabar 😆",
+  "Terima kasih sudah bertahan 😘",
+  "Aku tetap milik kamu 😜",
+  "Semoga makin banyak ketawa 😂"
+];
+
+function randomMessage() {
+  document.getElementById("message").innerText =
+    messages[Math.floor(Math.random() * messages.length)];
+}
+
+// Hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 300);
+</script>
+
+</body>
+</html>
