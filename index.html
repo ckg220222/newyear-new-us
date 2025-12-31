@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 is ours ❤️</title>
+<title>2026 Bersamamu ❤️</title>
 
 <style>
 * { box-sizing: border-box; }
@@ -15,6 +15,7 @@ html, body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* BACKGROUND FOTO */
 body {
   background: url("bg.jpg") no-repeat center center fixed;
   background-size: cover;
@@ -23,12 +24,20 @@ body {
   overflow-x: hidden;
 }
 
+/* OVERLAY GELAP */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: -1;
+}
 
 /* INTRO */
 #intro {
   position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, #ff5f8f, #ff8fb1);
+  background: rgba(0,0,0,0.8);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,18 +47,12 @@ body {
 }
 
 #intro h1 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   animation: pulse 2s infinite;
 }
 
-#intro p {
-  margin-top: 15px;
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
 #intro button {
-  margin-top: 30px;
+  margin-top: 25px;
   padding: 15px 35px;
   border-radius: 40px;
   border: none;
@@ -58,7 +61,7 @@ body {
   font-size: 18px;
 }
 
-/* MAIN */
+/* SECTION */
 section {
   min-height: 100vh;
   padding: 40px 20px;
@@ -68,7 +71,7 @@ section {
 }
 
 h1 {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   animation: pulse 2s infinite;
 }
 
@@ -86,13 +89,13 @@ h1 {
   50% { transform: scale(1.05); }
 }
 
-/* Countdown */
+/* COUNTDOWN */
 #countdown {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-top: 15px;
 }
 
-/* Gallery */
+/* GALLERY */
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -106,7 +109,7 @@ h1 {
   object-fit: cover;
 }
 
-/* Music Button */
+/* MUSIC BUTTON */
 .music-btn {
   position: fixed;
   bottom: 20px;
@@ -119,11 +122,10 @@ h1 {
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   z-index: 999;
 }
 
-/* Hearts */
+/* HEARTS */
 .heart {
   position: fixed;
   top: -10px;
@@ -142,9 +144,9 @@ h1 {
 
 <!-- INTRO -->
 <div id="intro">
-  <h1>💖 2026 is ours 💖</h1>
-  <p>🤍 PENCET CINI 🤍</p>
-  <button onclick="start()">Tap to Start ❤️</button>
+  <h1>💖 Haii Cantikku 💖</h1>
+  <p>Hadiah Kecil Untuk Sayang nii</p>
+  <button onclick="start()">Pencet Cini</button>
 </div>
 
 <!-- AUDIO -->
@@ -153,16 +155,15 @@ h1 {
 </audio>
 
 <!-- MUSIC BUTTON -->
-<div class="music-btn" onclick="toggleMusic()" id="musicBtn">🔊</div>
+<div class="music-btn" id="musicBtn" onclick="toggleMusic()">🔊</div>
 
 <!-- SECTION 1 -->
 <section>
   <h1>🎆 Selamat Tahun Baru 2026 🎆</h1>
-  <h2>KITA SAMA SAMA TERUS YAA SAMPAI TAHUN TAHUN BERIKUTNYA</h2>
+  <p>Bareng Terus Ya Sampai Tahun Tahun Berikutnya</p>
 
   <div class="card">
-    <p>kesyangan abang nih</p>
-    <h3>Farah Salabilla Ariama</h3>
+    <h3>Untuk Kesayangan Abang Niih</h3>
     <div id="countdown"></div>
   </div>
 </section>
@@ -171,14 +172,14 @@ h1 {
 <section>
   <h1>💌 Pesan Tahun Baru</h1>
   <div class="card">
-    <p id="message">Klik tombol 😜</p>
-    <button onclick="randomMessage()"> Pencet pencett hihi</button>
+    <p id="message">Pencet Pencet</p>
+    <button onclick="randomMessage()">Pesan Lucu 💖</button>
   </div>
 </section>
 
 <!-- SECTION 3 -->
 <section>
-  <h1>📸 foto capa niii</h1>
+  <h1>📸 Foto Capa Niii</h1>
   <div class="card">
     <div class="gallery">
       <img src="foto1.jpg">
@@ -190,7 +191,6 @@ h1 {
 </section>
 
 <script>
-// INTRO START
 const music = document.getElementById("music");
 const intro = document.getElementById("intro");
 const btn = document.getElementById("musicBtn");
@@ -202,7 +202,6 @@ function start() {
   setTimeout(() => intro.style.display = "none", 1000);
 }
 
-// Toggle music
 function toggleMusic() {
   if (playing) {
     music.pause();
@@ -214,11 +213,11 @@ function toggleMusic() {
   playing = !playing;
 }
 
-// Countdown
-const targetDate = new Date("January 1, 2026 00:00:00").getTime();
+// COUNTDOWN
+const target = new Date("January 1, 2026 00:00:00").getTime();
 setInterval(() => {
   const now = new Date().getTime();
-  const d = targetDate - now;
+  const d = target - now;
 
   document.getElementById("countdown").innerHTML =
     Math.floor(d / (1000*60*60*24)) + " hari " +
@@ -227,15 +226,13 @@ setInterval(() => {
     Math.floor((d / 1000) % 60) + " detik";
 }, 1000);
 
-// Pesan
+// PESAN
 const messages = [
-  "2026 KITA BUKTIKAN KE SEMUA YA SAYANG",
-  "Resolusi 2026: makin sayang aku yaa",
-  "Terima kasih sudah jadi my #1 support systemnya gw 😜",
-  "Semoga kita cepat ketemu yaa 😘",
-  "Semoga makin banyak rejekinya sama sama 🥰",
-  "Semoga kita selalu dilindungi yaa sayangku",
-  "Semoga makin cinta sama abangnyaaaa"
+  "Sama Sama Terus Yaa!!!",
+  "Resolusi 2026: makin sayang abangnya",
+  "Terima kasih my #1 support systemnya gw",
+  "🤍Semoga Cepat Ketemu Ya Sayangku🤍",
+  "Semoga Kita Selalu Dilindungi ya"
 ];
 
 function randomMessage() {
@@ -243,11 +240,11 @@ function randomMessage() {
     messages[Math.floor(Math.random() * messages.length)];
 }
 
-// Hearts
+// HEARTS
 setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerText = "❤️";
+  heart.innerText = "💖";
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
   document.body.appendChild(heart);
