@@ -321,6 +321,20 @@ function revealOnScroll() {
 }
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
+
+/* FALLING HEARTS */
+const hc = document.getElementById("hearts-container");
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = Math.random() > 0.5 ? "💖" : "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = Math.random() * 15 + 15 + "px";
+  h.style.animationDuration = Math.random() * 3 + 4 + "s";
+  hc.appendChild(h);
+  setTimeout(() => h.remove(), 7000);
+}, 350);
+  
 </script>
 
 </body>
